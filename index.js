@@ -379,3 +379,18 @@ while(!B || !I || !N || !G || !O ) {
     newNumber5(75);
     
 }
+let cellValues = [];
+document.querySelectorAll("td").forEach(cell => {
+    cellValues.push(parseInt(cell.textContent));
+});
+
+let numColumns = document.querySelectorAll("tr")[0].childElementCount;
+
+cellValues.sort((a, b) => a - b);
+
+let index = 0;
+for (let col = 0; col < numColumns; col++) {
+    for (let row = 0; row < cellValues.length / numColumns; row++) {
+        document.querySelectorAll("td")[row * numColumns + col].textContent = cellValues[index++];
+    }
+}
